@@ -1,0 +1,48 @@
+FORMAT: 1A
+HOST: http://185.244.173.142
+
+# Clucky
+
+Проект в формате **"Вопрос/Ответ"**
+
+## Авторизационная часть [/api/auth/login]
+
+### Авторизация и получение JWT токена [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "login": "hello",
+            "password": "world",
+            "email": "info@info.com"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "User successfully logged in",
+            "result": [
+                {
+                    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInN0YXRlSGFzaCI6ImVjYTc1OTUwN2VhM2E2NGRmMDUyNjE2MzRiZTUzMzc5MzdjYzExNmZkMmIyNzdkYmUxYWVlYmRmMDgyNzUxNjEiLCJpYXQiOjE1MzI0MjYwMjYsIm5iZiI6MTUzMjQyNjAyNywiZXhwIjoxNTMyNDI5NjI2LCJhdWQiOiJDbHVjayBjbGllbnQgYXBwbGljYXRpb24iLCJpc3MiOiJDbHVjayBBUEkiLCJzdWIiOiJhY2Nlc3NfdG9rZW4ifQ.qixTY5JG96Ti8UUwOq8wlm5T0hR7c6JjN8DUNx8t8B8",
+                    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInN0YXRlSGFzaCI6ImVjYTc1OTUwN2VhM2E2NGRmMDUyNjE2MzRiZTUzMzc5MzdjYzExNmZkMmIyNzdkYmUxYWVlYmRmMDgyNzUxNjEiLCJpYXQiOjE1MzI0MjYwMjYsIm5iZiI6MTUzMjQyNjAyNywiZXhwIjoxNTMyNDMxNDI2LCJhdWQiOiJDbHVjayBjbGllbnQgYXBwbGljYXRpb24iLCJpc3MiOiJDbHVjayBBUEkiLCJzdWIiOiJyZWZyZXNoX3Rva2VuIn0.ChEFAeXpfEgWjA3Jks8L7aZkz1b_nGUBFuKgkqK3Pec"
+                }
+            ],
+            "error": null
+        }
+
++ Response 404 (aplication/json)
+
+        {
+            "status": 404,
+            "message": {},
+            "result": {},
+            "error": {
+                "code": -1,
+                "message": "User with this credentials not found"
+          }
+        }
